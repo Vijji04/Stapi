@@ -1,10 +1,9 @@
-// CharacterDeets.js
 import React from 'react';
-import { Box, Heading, Text, CloseButton, UnorderedList, ListItem } from '@chakra-ui/react';
+import { Box, Heading, Text, CloseButton, UnorderedList, ListItem, Image } from '@chakra-ui/react';
 
 function CharacterDeets({ character, onClose, movies }) {
     if (!character) {
-        return null; // Return nothing if no character is selected
+        return null;
     }
 
     return (
@@ -22,8 +21,23 @@ function CharacterDeets({ character, onClose, movies }) {
                 position="absolute"
                 top="10px"
                 right="10px"
+                // pb="20px"
                 onClick={onClose}
             />
+
+            {/* Display Character Image */}
+            {character.image && (
+                <Box mb={4} mt={6} textAlign="center">
+                    <Image 
+                        src={character.image} 
+                        alt={character.name} 
+                        borderRadius="md"
+                        maxW="100%"
+                        height="50%"
+                        boxShadow="md"
+                    />
+                </Box>
+            )}
 
             <Heading as="h2" size="lg" mb={4}>
                 Character Details
